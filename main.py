@@ -34,8 +34,7 @@ with st.echo(code_location='below'):
                 "большую базу данных (800+ Mb) в Github, поэтому я локально сохраняю её в .csv и сжимаю. "
                 "Попутно я выбрасываю ненужные мне колонки, что облегчает файл в 6 раз.")
 
-    df = pd.read_csv("data compressed.csv", compression="gzip"
-                     )
+    df = pd.read_csv("data compressed.csv", compression="gzip")
     st.write(df.columns)
 
     st.markdown("Как выглядят данные? Много непонятных колонок с данными разных типов:")
