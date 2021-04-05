@@ -30,14 +30,8 @@ with st.echo(code_location='below'):
 
     st.markdown("Сначала я подгружаю данные, которые хранятся как база данных SQLite. Чтобы скормить в Pandas, "
                 "я использую библиотеку ``sqlite3``. Правда, у меня не получилось загрузить такую "
-                "большую базу данных (800+ Mb) в Github, поэтому я локально сохраняю её в .csv, "
-                "а код, в котором работаю с SQLite, оставляю закомментированным. Попутно я "
-                "выбрасываю ненужные мне колонки, что облегчает файл в 6 раз.")
-
-    # con = sqlite3.connect("FPA_FOD_20170508.sqlite")
-    # query = "select * from Fires"
-    # df = pd.read_sql_query(query, con)
-    # con.close()
+                "большую базу данных (800+ Mb) в Github, поэтому я локально сохраняю её в .csv и сжимаю. "
+                "Попутно я выбрасываю ненужные мне колонки, что облегчает файл в 6 раз.")
 
     df = pd.read_csv(
         "data compressed.csv",
@@ -69,9 +63,6 @@ with st.echo(code_location='below'):
 
     st.markdown("Теперь я преобразую пространственные данные, пользуясь ``geopandas``. Это удобная библиотека,"
                 "расширяющая возможности ``pandas`` в части работы с геоданными.")
-
-    df = df[["FIRE_YEAR", "DISCOVERY_DOY", "STAT_CAUSE_CODE", "STAT_CAUSE_DESCR", "LONGITUDE", "LATITUDE",
-             "FIRE_SIZE", "FIRE_SIZE_CLASS", "STATE", "COUNTY"]]
 
     gdf = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df["LONGITUDE"], df["LATITUDE"]))
 
