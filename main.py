@@ -34,7 +34,7 @@ with st.echo(code_location='below'):
                 "большую базу данных (800+ Mb) в Github, поэтому я локально сохраняю её в .csv и сжимаю. "
                 "Попутно я выбрасываю ненужные мне колонки, что облегчает файл в 6 раз.")
 
-    df = pd.read_csv("data compressed.csv", compression="gzip")
+    df = pd.read_csv("data compressed since 2010.csv", compression="gzip")
     st.write(df.columns)
 
     st.markdown("Как выглядят данные? Много непонятных колонок с данными разных типов:")
@@ -96,8 +96,8 @@ with st.echo(code_location='below'):
 
     scatter_dates = st.slider(
         label="Выбери промежуток времени (оба конца включаются):",
-        min_value=2014, max_value=2015,
-        value=(2014, 2015)
+        min_value=df['FIRE_YEAR'].min, max_value=df["FIRE_YEAR"].max,
+        value=(df['FIRE_YEAR'].min, df["FIRE_YEAR"].max)
     )
 
     scatter_relative_size = st.checkbox(
