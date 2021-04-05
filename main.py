@@ -96,8 +96,8 @@ with st.echo(code_location='below'):
 
     scatter_dates = st.slider(
         label="Выбери промежуток времени (оба конца включаются):",
-        min_value=df['FIRE_YEAR'].min, max_value=df["FIRE_YEAR"].max,
-        value=(df['FIRE_YEAR'].min, df["FIRE_YEAR"].max)
+        min_value=df['FIRE_YEAR'].min(), max_value=df["FIRE_YEAR"].max(),
+        value=(df['FIRE_YEAR'].min(), df["FIRE_YEAR"].max())
     )
 
     scatter_relative_size = st.checkbox(
