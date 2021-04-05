@@ -1,7 +1,8 @@
-plotly==4.14.3
-geopandas==0.9.0
-pandas==1.1.5
-Shapely==1.7.1
 numpy==1.19.2
+pandas==1.1.5
+geopandas==0.9.0
+plotly==4.14.3
+Shapely==1.7.1
+watchdog==2.0.2
 streamlit==0.79.0
 matplotlib==3.3.4

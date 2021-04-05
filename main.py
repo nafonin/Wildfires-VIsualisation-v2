@@ -7,6 +7,7 @@ import geopandas
 import plotly.graph_objects as go
 import plotly.express as px
 from shapely.geometry import Point
+import watchdog
 
 with st.echo(code_location='below'):
     st.title("Wildfire Visualisation")
@@ -33,16 +34,11 @@ with st.echo(code_location='below'):
                 "большую базу данных (800+ Mb) в Github, поэтому я локально сохраняю её в .csv и сжимаю. "
                 "Попутно я выбрасываю ненужные мне колонки, что облегчает файл в 6 раз.")
 
-    df = pd.read_csv(
-        "data compressed.csv",
-        compression="gzip"
-    )
-
-    """df = pd.read_csv("data compressed.csv", compression="gzip")"""
+    df = pd.read_csv("data compressed.csv", compression="gzip"
+                     )
     st.write(df.columns)
 
-    st.markdown("Как выгляд"
-                "ят данные? Много непонятных колонок с данными разных типов:")
+    st.markdown("Как выглядят данные? Много непонятных колонок с данными разных типов:")
 
     st.write(df.head(5))
 
@@ -51,7 +47,7 @@ with st.echo(code_location='below'):
 
     st.markdown("# 2. Подготовка данных")
 
-    st.markdown("Датасет *был* довольно большой (но в .csv лежит меньшая его версия, где нет многих колонок) "
+    st.markdown("Датасет *был* довольно большой (но в датафрейме лежит меньшая его версия, где нет многих колонок) "
                 "и содержит много технических данных, которые мне не нужны. Такие данные уже дропнуты."
                 "Вот, что я оставляю:")
     st.markdown("1. Дата возникновения пожара")
@@ -89,7 +85,6 @@ with st.echo(code_location='below'):
         pl_plain_map = go.Figure(go.Scattergeo())
         pl_plain_map.update_geos(scope="usa")
         st.write(pl_plain_map)
-
 
     st.markdown("# 4. Построение простых bubble maps")
 
