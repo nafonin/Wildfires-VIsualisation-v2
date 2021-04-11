@@ -197,8 +197,6 @@ with st.echo(code_location='below'):
 
     st.markdown("Сначала посмотрим, где произошли 20 самых крупных пожаров")
 
-    st.write(df.columns)
-
     threshold_size = df["FIRE_SIZE"].sort_values(inplace=False, ascending=False)[20]
     greatest_fires = df[df["FIRE_SIZE"] >= threshold_size].reset_index()
 
@@ -210,3 +208,7 @@ with st.echo(code_location='below'):
 
     st.markdown("## 9. Выводы")
 
+    st.markdown("Проблема пожаров, как видно из графиков, нарастает с каждым годом. Особенно плохо то, что "
+                "основной вклад в печальный рост вносят не традционно страдающие от пожаров штаты (как Техас, например)"
+                ", а штаты, в которых все было не так уж и плохо. Поэтому недостаточно усилий в каком-то ограниченном "
+                "количестве штатов. Нужны комплексные меры по всей стране.")
